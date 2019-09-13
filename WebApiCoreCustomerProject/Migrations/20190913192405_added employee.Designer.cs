@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiCoreCustomerProject.Models;
 
 namespace WebApiCoreCustomerProject.Migrations
 {
     [DbContext(typeof(CustDbContext))]
-    partial class CustDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190913192405_added employee")]
+    partial class addedemployee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,27 +46,15 @@ namespace WebApiCoreCustomerProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Firstname")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("Firstname");
 
-                    b.Property<string>("Lastname")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("Lastname");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("Password");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(30);
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Username")
-                        .IsUnique()
-                        .HasName("IDX_Username");
 
                     b.ToTable("Employees");
                 });

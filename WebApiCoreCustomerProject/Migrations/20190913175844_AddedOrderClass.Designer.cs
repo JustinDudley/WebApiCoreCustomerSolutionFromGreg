@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiCoreCustomerProject.Models;
 
 namespace WebApiCoreCustomerProject.Migrations
 {
     [DbContext(typeof(CustDbContext))]
-    partial class CustDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190913175844_AddedOrderClass")]
+    partial class AddedOrderClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,37 +38,6 @@ namespace WebApiCoreCustomerProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("WebApiCoreCustomerProject.Models.Employee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Firstname")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<string>("Lastname")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Username")
-                        .IsUnique()
-                        .HasName("IDX_Username");
-
-                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("WebApiCoreCustomerProject.Models.Order", b =>
